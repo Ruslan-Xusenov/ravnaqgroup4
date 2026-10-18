@@ -12,5 +12,5 @@ python3 -m http.server 4173
 Brauzer: http://localhost:4173
 
 Telegram havolasi `dist/index.html` ichidagi ikkita CTA tugmasida.
-Taqdimot sanasi `dist/script.js` ichida: 2026-10-23, 20:00, Toshkent.
+Taymer birinchi kirishda 2:00 dan boshlanadi va 0:00 da to‘xtaydi. Shu tabda sahifa yangilanganda sessionStorage orqali davom etadi; tugagan taymer qayta boshlanmaydi.
 Mobil dizayn yuborilgan namunaga asoslangan; desktopda kartalar uch ustunda.

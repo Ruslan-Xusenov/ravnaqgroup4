@@ -1,22 +1,34 @@
 (() => {
-  // Taqdimot vaqti: 23-oktabr 2026, soat 20:00 (Toshkent, UTC+5).
-  const eventTime = new Date('2026-10-23T20:00:00+05:00').getTime();
   const display = document.getElementById('countdown');
-  const label = document.querySelector('.timer-label');
-  function updateCountdown() {
-    const remaining = Math.max(0, eventTime - Date.now());
-    if (!remaining) {
-      display.textContent = '23-oktabr · 20:00';
-      label.textContent = 'Taqdimot haqida Telegram kanalimizda';
-      return;
+  const storageKey = 'saodat-countdown-deadline';
+  const duration = 2 * 60 * 1000;
+  let deadline = Date.now() + duration;
+
+  // Preserve the countdown on reload within the same browser tab.
+  try {
+    const saved = Number(sessionStorage.getItem(storageKey));
+    if (Number.isFinite(saved) && saved > 0) {
+      deadline = saved;
+    } else {
+      sessionStorage.setItem(storageKey, String(deadline));
     }
-    const days = Math.floor(remaining / 86400000);
-    const hours = Math.floor(remaining / 3600000) % 24;
-    const minutes = Math.floor(remaining / 60000) % 60;
-    const seconds = Math.floor(remaining / 1000) % 60;
-    const pad = value => String(value).padStart(2, '0');
-    display.textContent = `${days ? days + ' kun ' : ''}${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  } catch {
+    // The timer still works when browser storage is unavailable.
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+
+  let intervalId;
+  function updateCountdown() {
+    const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+    const minutes = Math.floor(remaining / 60);
+    const seconds = String(remaining % 60).padStart(2, '0');
+    display.textContent = `${minutes}:${seconds}`;
+    if (remaining === 0 && intervalId !== undefined) {
+      clearInterval(intervalId);
+    }
+    return remaining;
+  }
+
+  if (updateCountdown() > 0) {
+    intervalId = setInterval(updateCountdown, 250);
+  }
 })();

@@ -4,3 +4,8 @@
 @media(max-width:360px){.event-date{font-size:18px}.header{padding-inline:20px}.hero{height:550px}.hero-copy p{font-size:19px}.cta{font-size:13px}.benefits h2{font-size:21px}.card h3{font-size:23px}.button-hint{font-size:12px}.countdown{font-size:22px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta{transition:none}}
 @media(min-width:801px){.hero-picture:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#59ace7 0%,#59ace7eb 24%,#59ace766 43%,transparent 66%)}.hero-copy{position:relative}.hero-copy h1{color:#513818}.header{position:relative}}
+
+/* Larger uppercase offer text across screen sizes. */
+.hero-copy p{font-size:34px;font-weight:500;line-height:1.18;text-transform:uppercase;padding-inline:16px}
+@media(max-width:800px){.hero-copy p{font-size:clamp(25px,5vw,34px);margin-top:22px;padding-inline:18px}}
+@media(max-width:360px){.hero-copy p{font-size:23px}}
