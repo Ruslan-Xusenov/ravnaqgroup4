@@ -31,4 +31,24 @@
   if (updateCountdown() > 0) {
     intervalId = setInterval(updateCountdown, 250);
   }
+
+  // Track Meta Pixel Lead / Contact on CTA button clicks
+  document.querySelectorAll('a.cta').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      if (typeof window.fbq === 'function') {
+        try {
+          window.fbq('track', 'Lead', {
+            content_name: 'Taqdimotga qatnashish',
+            button_position: index === 0 ? 'hero' : 'footer'
+          });
+          window.fbq('track', 'Contact', {
+            content_name: 'Telegram Group Join'
+          });
+        } catch (e) {
+          console.warn('Pixel tracking error:', e);
+        }
+      }
+    });
+  });
 })();
+
