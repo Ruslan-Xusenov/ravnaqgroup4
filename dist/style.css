@@ -9,3 +9,11 @@
 .hero-copy p{font-size:34px;font-weight:800;line-height:1.18;text-transform:uppercase;padding-inline:16px}
 @media(max-width:800px){.hero-copy p{font-size:clamp(25px,5vw,34px);margin-top:22px;padding-inline:18px}}
 @media(max-width:360px){.hero-copy p{font-size:23px}}
+
+/* Keep the offer crisp in front of a softened architectural background. */
+.hero-picture{filter:blur(4px);transform:scale(1.025);transform-origin:center}
+.header{position:relative;z-index:2}
+.hero-copy{position:relative;z-index:1;isolation:isolate;text-shadow:none}
+.hero-copy::before{content:"";position:absolute;z-index:-1;inset:0 -6% -34px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,255,255,.88) 0%,rgba(255,255,255,.72) 43%,rgba(255,255,255,.3) 65%,transparent 78%)}
+.hero-action{z-index:2}
+@media(max-width:800px){.hero-picture{filter:blur(3.5px)}.hero-copy::before{inset:-5px -12% -35px}}
