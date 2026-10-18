@@ -10,10 +10,11 @@
 @media(max-width:800px){.hero-copy p{font-size:clamp(25px,5vw,34px);margin-top:22px;padding-inline:18px}}
 @media(max-width:360px){.hero-copy p{font-size:23px}}
 
-/* Keep the fire-orange offer in front of the sharp architectural background. */
-.hero-picture{filter:none;transform:none}
+/* A light (20% of a 10px scale) background blur; copy stays sharp. */
+.hero-picture{filter:blur(2px);transform:scale(1.015);transform-origin:center}
 .header{position:relative;z-index:2}
 .hero-copy{position:relative;z-index:1;isolation:isolate;text-shadow:none}
-.hero-copy::before{content:"";position:absolute;z-index:-1;inset:0 -6% -34px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,255,255,.88) 0%,rgba(255,255,255,.72) 43%,rgba(255,255,255,.3) 65%,transparent 78%)}
+.hero-copy p{width:calc(100% - 40px);max-width:820px;margin:22px auto 0;padding:24px 28px;color:#fff2d5;background:#30271f;border:1px solid rgba(255,242,213,.22);border-radius:20px;box-shadow:0 0 12px rgba(0,0,0,.85)}
 .hero-action{z-index:2}
-@media(max-width:800px){.hero-copy::before{inset:-5px -12% -35px}}
+@media(max-width:800px){.hero-copy p{padding:20px 14px;border-radius:16px}}
+@media(max-width:360px){.hero-copy p{width:calc(100% - 32px);padding:18px 12px}}
