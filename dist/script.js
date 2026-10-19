@@ -29,7 +29,7 @@
   }
 
   if (updateCountdown() > 0) {
-    intervalId = setInterval(updateCountdown, 250);
+    intervalId = setInterval(updateCountdown, 1000);
   }
 
   // Track Meta Pixel Lead / Contact on CTA button clicks
